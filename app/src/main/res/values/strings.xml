@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">WorldNews25</string>
+    <string name="app_name">World News</string>
+    <string name="welcome">Welcome</string>
+    <string name="are_you_already_registered">Are you already registered?</string>
+    <string name="password">Password</string>
+    <string name="did_you_forget_your_password">Did you forget your password?</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="or">OR</string>
+    <string name="login_with_google">Login with Google</string>
 </resources>
