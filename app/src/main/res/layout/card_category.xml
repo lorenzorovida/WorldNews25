@@ -1,47 +1,37 @@
-<com.google.android.material.card.MaterialCardView android:id="@+id/card"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/margin_small"
-    android:checkable="true"
     android:clickable="true"
     android:focusable="true"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:checkable="true">
 
-    <LinearLayout
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- Media -->
+    <ImageView
         android:layout_width="match_parent"
+        android:layout_height="194dp"
+        android:id="@+id/image_view"
+        app:srcCompat="@drawable/ic_launcher_background"
+        android:scaleType="centerCrop"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <!-- Media -->
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            app:srcCompat="@drawable/country_italy"
-            android:id="@+id/image_view"
-            android:scaleType="centerCrop"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <!-- Title, secondary and supporting text -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Titolo"
-                android:id="@+id/title"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
-                />
+        android:text="Testo a caso"
+        android:id="@+id/title"
+        android:layout_margin="@dimen/margin"
+        android:textAppearance="?attr/textAppearanceBodySmall"
+        />
 
 
-        </LinearLayout>
-
-
-
-    </LinearLayout>
+</LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

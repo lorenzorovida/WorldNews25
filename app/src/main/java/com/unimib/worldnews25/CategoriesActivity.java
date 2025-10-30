@@ -30,58 +30,43 @@ public class CategoriesActivity extends AppCompatActivity {
             return insets;
         });
 
-        fillGridLayout();
+        fillGrid();
+
     }
 
-    void fillGridLayout() {
+    void fillGrid() {
         GridLayout gridLayout = findViewById(R.id.grid_layout);
 
-        LayoutInflater inflater = LayoutInflater.from(this);
-
-        String[] titoli = {
-                "Elemento 1",
-                "Elemento 2",
-                "Elemento 3",
-                "Elemento 4",
-                "Elemento 5",
-                "Elemento 6",
-                "Elemento 6",
-                "Elemento 6",
-                "Elemento 6",
-                "Elemento 6",
-                "Elemento 6",
-                "Elemento 6"
+        String[] categories = {
+                "business",
+                "entertainment",
+                "general",
+                "health",
+                "science",
+                "sports",
+                "technology"
         };
 
-        Drawable[] disegni = {
-                AppCompatResources.getDrawable(this, R.drawable.country_italy),
-                AppCompatResources.getDrawable(this, R.drawable.login_main)
-        };
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
 
-        for (int i = 0; i < titoli.length; i++) {
-            View view = inflater.inflate(R.layout.card_category, gridLayout, false);
+        for (int i = 0; i < categories.length; i++) {
+            View card = layoutInflater.inflate(R.layout.card_category, gridLayout, false);
 
-            TextView titleView = view.findViewById(R.id.title);
-            titleView.setText(titoli[i]);
-
-            ImageView imageView = view.findViewById(R.id.image_view);
-            imageView.setImageDrawable(disegni[i % 2]);
+            TextView textView = card.findViewById(R.id.title);
+            textView.setText(categories[i]);
 
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
 
             params.rowSpec = GridLayout.spec(i / 2, 1);
-            params.columnSpec = GridLayout.spec(i % 2, 1, 1f);
+            params.columnSpec = GridLayout.spec(i % 2, 1, 1);
+
+            int margin = (int)getResources().getDimension(R.dimen.margin_medium);
+            params.setMargins(margin,margin,margin,margin);
             params.width = 0;
+            params.height = GridLayout.LayoutParams.WRAP_CONTENT;
 
-            int margin = (int) getResources().getDimension(R.dimen.margin_medium);
-            params.setMargins(margin, margin, margin, margin);
-
-            view.setLayoutParams(params);
-            view.setOnClickListener(v ->
-                    ((MaterialCardView)view).setChecked(!((MaterialCardView) view).isChecked())
-            );
-
-            gridLayout.addView(view);
+            card.setLayoutParams(params);
+            gridLayout.addView(card);
         }
     }
 }
