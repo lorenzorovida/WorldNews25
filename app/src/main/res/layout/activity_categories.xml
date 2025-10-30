@@ -14,32 +14,33 @@
         android:layout_marginStart="@dimen/margin"
         android:layout_marginTop="@dimen/margin"
         android:layout_marginEnd="@dimen/margin"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:id="@+id/title"
         android:text="@string/pick_some_categories"
         android:textAppearance="@style/MyHeadlineLarge"
+        android:text="Pick some categories"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#ff0"
         app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_height="0dp"
         android:layout_width="match_parent"
         android:fillViewport="true"
         >
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:columnCount="2"
-        android:id="@+id/grid_layout"
-        android:layout_margin="@dimen/margin_medium"
-        app:layout_constraintTop_toBottomOf="@id/title"
-        app:layout_constraintBottom_toBottomOf="parent"
-        >
 
 
-    </GridLayout>
-    </ScrollView>
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
