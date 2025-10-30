@@ -27,6 +27,7 @@
         android:layout_marginStart="@dimen/margin"
         android:textAppearance="?attr/textAppearanceBodySmall"
         android:text="@string/are_you_already_registered"/>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,6 +45,7 @@
             android:layout_height="wrap_content"
             android:background="#00000000"/>
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,6 +63,7 @@
             android:layout_height="wrap_content"
             android:background="#00000000"/>
     </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="match_parent"
@@ -70,6 +73,7 @@
         android:textAppearance="@style/TextAppearance.Material3.BodySmall"
         android:text="@string/did_you_forget_your_password"
         />
+
     <Button
         android:id="@+id/login_button"
         style="@style/Widget.Material3.Button.ElevatedButton"
@@ -79,36 +83,34 @@
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-
         android:layout_gravity="center"
         />
-    <RelativeLayout
+
+    <LinearLayout
         android:layout_marginTop="@dimen/margin"
         android:layout_width="match_parent"
+        android:orientation="horizontal"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
+        android:gravity="center"
         android:layout_marginEnd="100dp">
         <View
             android:layout_width="100dp"
             android:layout_height="1dp"
-            android:layout_toStartOf="@id/text_or"
             android:layout_marginEnd="@dimen/margin"
-            android:layout_centerInParent="true"
             android:background="#555"/>
         <TextView
             android:id="@+id/text_or"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:text="@string/or" />
         <View
             android:layout_width="100dp"
             android:layout_height="1dp"
             android:layout_marginStart="@dimen/margin"
-            android:layout_toEndOf="@id/text_or"
-            android:layout_centerInParent="true"
             android:background="#555"/>
-    </RelativeLayout>
+    </LinearLayout>
+
     <Button
         style="@style/Widget.Material3.Button.ElevatedButton"
         android:layout_width="match_parent"
