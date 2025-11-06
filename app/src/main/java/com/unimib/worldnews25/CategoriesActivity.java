@@ -50,10 +50,17 @@ public class CategoriesActivity extends AppCompatActivity {
         LayoutInflater layoutInflater = LayoutInflater.from(this);
 
         for (int i = 0; i < categories.length; i++) {
-            View card = layoutInflater.inflate(R.layout.card_category, gridLayout, false);
+            MaterialCardView card = (MaterialCardView) layoutInflater.inflate(R.layout.card_category, gridLayout, false);
 
             TextView textView = card.findViewById(R.id.title);
             textView.setText(categories[i]);
+
+            card.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    card.setChecked(!card.isChecked());
+                }
+            });
 
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
 
