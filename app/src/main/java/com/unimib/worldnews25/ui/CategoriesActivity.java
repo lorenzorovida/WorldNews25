@@ -1,6 +1,5 @@
-package com.unimib.worldnews25;
+package com.unimib.worldnews25.ui;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,14 +9,23 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.unimib.worldnews25.R;
+import com.unimib.worldnews25.utils.Constants;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CategoriesActivity extends AppCompatActivity {
+
+    private List<String> selectedCategories = new ArrayList<>();
+
+    private ExtendedFloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +38,8 @@ public class CategoriesActivity extends AppCompatActivity {
             return insets;
         });
 
+        floatingActionButton = findViewById(R.id.floating_action_button);
+
         fillGrid();
 
     }
@@ -37,28 +47,32 @@ public class CategoriesActivity extends AppCompatActivity {
     void fillGrid() {
         GridLayout gridLayout = findViewById(R.id.grid_layout);
 
-        String[] categories = {
-                "business",
-                "entertainment",
-                "general",
-                "health",
-                "science",
-                "sports",
-                "technology"
-        };
 
         LayoutInflater layoutInflater = LayoutInflater.from(this);
 
-        for (int i = 0; i < categories.length; i++) {
+        for (int i = 0; i < Constants.LIST_CATEGORIES.length; i++) {
             MaterialCardView card = (MaterialCardView) layoutInflater.inflate(R.layout.card_category, gridLayout, false);
 
             TextView textView = card.findViewById(R.id.title);
-            textView.setText(categories[i]);
+            textView.setText(Constants.getListCategoriesNames(this)[i]);
+
+            ImageView imageView = card.findViewById(R.id.image_view);
+            imageView.setImageDrawable(Constants.getListCategoriesDrawables(this)[i]);
+
+            String currentCategory = Constants.LIST_CATEGORIES[i];
 
             card.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     card.setChecked(!card.isChecked());
+
+                    if (card.isChecked()) {
+                        selectedCategories.add(currentCategory);
+                    } else {
+                        selectedCategories.remove(currentCategory);
+                    }
+
+                    tryToEnableFloatingActionButton();
                 }
             });
 
@@ -75,5 +89,9 @@ public class CategoriesActivity extends AppCompatActivity {
             card.setLayoutParams(params);
             gridLayout.addView(card);
         }
+    }
+
+    private void tryToEnableFloatingActionButton(){
+        floatingActionButton.setEnabled(!selectedCategories.isEmpty());
     }
 }

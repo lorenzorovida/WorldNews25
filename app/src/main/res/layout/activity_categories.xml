@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CategoriesActivity">
+    tools:context=".ui.CategoriesActivity">
 
 
     <TextView
@@ -36,6 +36,19 @@
 
     </GridLayout>
     </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:text="@string/confirm_text"
+        android:enabled="false"
+        android:id="@+id/floating_action_button"
+        app:icon="@drawable/outline_check_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

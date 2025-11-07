@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_welcome"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.unimib.worldnews25.ui.LoginFragment"
+        android:label="LoginFragment"
+        >
+        <action
+            android:id="@+id/action_loginFragment_to_categoriesActivity"
+            app:destination="@id/categoriesActivity" />
+    </fragment>
+
+    <activity
+        android:id="@+id/categoriesActivity"
+        android:name="com.unimib.worldnews25.ui.CategoriesActivity"
+        android:label="activity_categories"
+        tools:layout="@layout/activity_categories" />
+</navigation>
