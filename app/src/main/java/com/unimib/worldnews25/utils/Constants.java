@@ -4,10 +4,20 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 
 import com.unimib.worldnews25.R;
+import com.unimib.worldnews25.model.Country;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Constants {
+
+    // Constants for NewsAPI.org
+    public static final String FRANCE = "fr";
+    public static final String ITALY = "it";
+    public static final String GERMANY = "de";
+    public static final String UNITED_KINGDOM = "gb";
+    public static final String SPAIN = "es";
 
     public static final String CATEGORY_BUSINESS = "business";
     public static final String CATEGORY_ENTERTAINMENT = "entertainment";
@@ -50,6 +60,34 @@ public class Constants {
                 context.getDrawable(R.drawable.category_technology)
         };
     }
+
+    public static final List<String> COUNTRIES = Arrays.asList(
+            FRANCE, ITALY, GERMANY, SPAIN, UNITED_KINGDOM);
+
+    public static final List<Integer> COUNTRIES_NAMES = Arrays.asList(
+            R.string.countries_france, R.string.countries_italy, R.string.countries_germany,
+            R.string.countries_spain, R.string.countries_unitedkingdom);
+
+    public static final List<Integer> COUNTRIES_DRAWABLES = Arrays.asList(R.drawable.country_france,
+            R.drawable.country_italy, R.drawable.country_germany, R.drawable.country_spain,
+            R.drawable.country_unitedkingdom);
+
+    public static ArrayList<Country> generateCountryList(Context context) {
+        ArrayList<Country> countriesList = new ArrayList<>();
+        for (int i = 0; i < COUNTRIES.size(); i++) {
+            countriesList.add(new Country(
+                    context.getString(COUNTRIES_NAMES.get(i)),
+                    COUNTRIES.get(i),
+                    context.getDrawable(COUNTRIES_DRAWABLES.get(i))
+            ));
+        }
+        return countriesList;
+    }
+
+    public static final String SHARED_PREFERENCES_FILENAME = "com.unimib.worldnews.preferences";
+    public static final String SHARED_PREFERENCES_COUNTRY_OF_INTEREST = "country_of_interest";
+    public static final String SHARED_PREFERENCES_CATEGORIES_OF_INTEREST = "categories_of_interest";
+
 
 
 

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:checkable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Media -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="194dp"
+            android:id="@+id/image_view"
+            app:srcCompat="@drawable/ic_launcher_background"
+            android:scaleType="centerCrop"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Testo a caso"
+            android:id="@+id/text_view"
+            android:layout_margin="@dimen/margin"
+            android:textAppearance="?attr/textAppearanceBodySmall"
+            />
+
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

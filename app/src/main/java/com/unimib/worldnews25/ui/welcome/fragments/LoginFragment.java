@@ -1,6 +1,5 @@
-package com.unimib.worldnews25.ui;
+package com.unimib.worldnews25.ui.welcome.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -59,7 +58,7 @@ public class LoginFragment extends Fragment {
 
                 if (true) {
                     if (true) {
-                        Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_categoriesActivity);
+                        Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_categoriesFragment);
                     } else {
                         inputPassword.setError(getString(R.string.check_password));
                     }
