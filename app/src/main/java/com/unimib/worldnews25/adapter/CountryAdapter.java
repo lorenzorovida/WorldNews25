@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.card.MaterialCardView;
+import com.google.gson.Gson;
 import com.unimib.worldnews25.R;
 import com.unimib.worldnews25.model.Country;
 import com.unimib.worldnews25.utils.Constants;
@@ -56,6 +57,7 @@ public class CountryAdapter extends ArrayAdapter<Country> {
 
             Navigation.findNavController(view).navigate(R.id.action_countryFragment_to_homeActivity);
         });
+
 
 
 

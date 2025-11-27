@@ -88,7 +88,8 @@ public class Constants {
     public static final String SHARED_PREFERENCES_COUNTRY_OF_INTEREST = "country_of_interest";
     public static final String SHARED_PREFERENCES_CATEGORIES_OF_INTEREST = "categories_of_interest";
 
-
+    public static final String SAMPLE_JSON_API_RESPONSE = "sample_api_response.json";
+    public static final String SAVED_ARTICLES_DATABASE = "db-articles";
 
 
 

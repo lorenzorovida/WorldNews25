@@ -3,11 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_home"
-    app:startDestination="@id/newsFragment">
-
+    app:startDestination="@id/headlineFragment">
     <fragment
-        android:id="@+id/newsFragment"
-        android:name="com.unimib.worldnews25.ui.home.fragment.NewsFragment"
-        android:label="fragment_news"
-        tools:layout="@layout/fragment_news" />
+        android:id="@+id/headlineFragment"
+        android:name="com.unimib.worldnews25.ui.home.fragment.HeadlineFragment"
+        android:label="@string/top_headlines"
+        tools:layout="@layout/fragment_headline" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.unimib.worldnews25.ui.home.fragment.FavoritesFragment"
+        android:label="@string/favorite_articles"
+        tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/myChoicesFragment"
+        android:name="com.unimib.worldnews25.ui.home.fragment.MyChoicesFragment"
+        android:label="@string/my_choices"
+        tools:layout="@layout/fragment_my_choices" />
+    <fragment
+        android:id="@+id/searchArticleFragment"
+        android:name="com.unimib.worldnews25.ui.home.fragment.SearchArticleFragment"
+        android:label="@string/favorite_articles"
+        tools:layout="@layout/fragment_search_article" />
 </navigation>

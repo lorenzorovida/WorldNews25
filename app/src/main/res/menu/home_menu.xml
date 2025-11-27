@@ -3,27 +3,27 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/preferenceNewsFragment"
-        android:title="A"
+        android:id="@+id/headlineFragment"
+        android:title="@string/top_headlines"
         android:icon="@drawable/outline_newspaper_24"
         />
 
     <item
-        android:id="@+id/popularNewsFragment"
-        android:title="B"
-        android:icon="@drawable/outline_newspaper_24"
+        android:id="@+id/myChoicesFragment"
+        android:title="@string/my_choices"
+        android:icon="@drawable/outline_60fps_24"
 
         />
 
     <item
-        android:id="@+id/searchNewsFragment"
-        android:title="C"
-        android:icon="@drawable/outline_newspaper_24"
+        android:id="@+id/searchArticleFragment"
+        android:title="@string/search_article"
+        android:icon="@drawable/outline_document_search_24"
         />
 
     <item
-        android:id="@+id/favoriteNewsFragment"
-        android:title="D"
-        android:icon="@drawable/outline_newspaper_24"
+        android:id="@+id/favoritesFragment"
+        android:title="@string/favorite_articles"
+        android:icon="@drawable/baseline_favorite_24"
         />
 </menu>

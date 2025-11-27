@@ -41,6 +41,9 @@ dependencies {
     implementation(libs.commons.validator)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+    implementation(libs.gson)
+    implementation(libs.room.runtime)
+    annotationProcessor(libs.room.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

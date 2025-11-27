@@ -30,6 +30,11 @@
     <string name="countries_unitedkingdom">United Kingdom</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="top_headlines">Top headlines</string>
+    <string name="my_choices">My choices</string>
+    <string name="search_article">Search article</string>
+    <string name="favorite_articles">Favorite articles</string>
+    <string name="json_loading_error">There was an error loading the JSON file</string>
 
 
 </resources>
