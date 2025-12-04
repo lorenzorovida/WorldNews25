@@ -19,7 +19,7 @@ import java.util.List;
 
 public class ArticleRecyclerAdapter extends RecyclerView.Adapter<ArticleRecyclerAdapter.ViewHolder> {
 
-    private List<Article> articleList;
+    private final List<Article> articleList;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView titleTextView;
