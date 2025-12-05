@@ -22,9 +22,15 @@ public interface ArticleDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(List<Article> articles);
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    List<Long> insertArticlesList(List<Article> articlesList);
+
     @Delete
     void delete(Article article);
 
     @Query("DELETE from Article")
     void deleteAll();
+
+    @Update
+    void updateArticle(Article article);
 }

@@ -15,6 +15,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.unimib.worldnews25.R;
+import com.unimib.worldnews25.utils.Constants;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -46,8 +47,7 @@ public class HomeActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(bottomNav, navController);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-
-
+        //getApplicationContext().deleteDatabase(Constants.SAVED_ARTICLES_DATABASE);
 
     }
 }

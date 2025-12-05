@@ -1,5 +1,7 @@
 package com.unimib.worldnews25.model;
 
+import java.util.Objects;
+
 public class ArticleSource {
     private String id;
     private String name;
@@ -23,5 +25,18 @@ public class ArticleSource {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        ArticleSource that = (ArticleSource) o;
+        boolean e = Objects.equals(id, that.id) && Objects.equals(name, that.name);
+        return e;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }

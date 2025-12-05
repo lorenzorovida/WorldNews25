@@ -1,6 +1,8 @@
 package com.unimib.worldnews25.adapter;
 
 
+import static android.view.View.INVISIBLE;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,7 @@ import java.util.List;
 public class ArticleRecyclerAdapter extends RecyclerView.Adapter<ArticleRecyclerAdapter.ViewHolder> {
 
     private final List<Article> articleList;
+    private final boolean showLikes;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView titleTextView;
@@ -49,8 +52,9 @@ public class ArticleRecyclerAdapter extends RecyclerView.Adapter<ArticleRecycler
     }
 
 
-    public ArticleRecyclerAdapter(List<Article> articleList) {
+    public ArticleRecyclerAdapter(List<Article> articleList, boolean showLikes) {
         this.articleList = articleList;
+        this.showLikes = showLikes;
     }
 
     @Override
@@ -66,18 +70,23 @@ public class ArticleRecyclerAdapter extends RecyclerView.Adapter<ArticleRecycler
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
         viewHolder.getAuthorTextView().setText(articleList.get(position).getAuthor());
         viewHolder.getTitleTextView().setText(articleList.get(position).getTitle());
+        viewHolder.getCheckboxFavorite().setChecked(articleList.get(position).getLike());
+
+        if (showLikes == false) {
+            viewHolder.getCheckboxFavorite().setVisibility(INVISIBLE);
+        }
 
         int positionSaved = position;
 
         viewHolder.getCheckboxFavorite().setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(@NonNull CompoundButton compoundButton, boolean b) {
-                if (b) {
-                    ArticleRoomDatabase.getDatabase(viewHolder.getCheckboxFavorite().getContext())
-                            .articleDao().insert(articleList.get(positionSaved));
-                } else {
+                Article currentArticle = articleList.get(viewHolder.getAdapterPosition());
 
-                }
+                currentArticle.setLike(b);
+
+                ArticleRoomDatabase.getDatabase(viewHolder.getCheckboxFavorite().getContext()).
+                        articleDao().updateArticle(currentArticle);
             }
         });
 

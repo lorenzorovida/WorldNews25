@@ -4,10 +4,12 @@ import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Objects;
+
 @Entity
 public class Article {
     @PrimaryKey(autoGenerate = true)
-    public int uid;
+    public long uid;
 
     @Embedded(prefix = "source_")
     private ArticleSource source;
@@ -20,8 +22,12 @@ public class Article {
     private String publishedAt;
     private String content;
 
+    private boolean like;
+
+
+
     public Article(ArticleSource source, String author, String title, String description,
-                   String url, String urlToImage, String publishedAt, String content) {
+                   String url, String urlToImage, String publishedAt, String content, boolean like) {
         setSource(source);
         setAuthor(author);
         setTitle(title);
@@ -30,7 +36,22 @@ public class Article {
         setUrlToImage(urlToImage);
         setPublishedAt(publishedAt);
         setContent(content);
+        setLike(like);
     }
+
+    public void setLike(boolean like) {
+        this.like = like;
+    }
+
+    public void setUid(long uid) {
+        this.uid = uid;
+    }
+
+    public long getUid() {
+        return uid;
+    }
+
+    public boolean getLike() { return like; }
 
     public ArticleSource getSource() {
         return source;
@@ -94,5 +115,18 @@ public class Article {
 
     public String getContent() {
         return content;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Article article = (Article) o;
+        boolean e = Objects.equals(source, article.source) && Objects.equals(author, article.author) && Objects.equals(title, article.title) && Objects.equals(description, article.description) && Objects.equals(url, article.url) && Objects.equals(urlToImage, article.urlToImage) && Objects.equals(publishedAt, article.publishedAt) && Objects.equals(content, article.content);
+        return e;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(source, author, title, description, url, urlToImage, publishedAt, content);
     }
 }

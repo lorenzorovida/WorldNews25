@@ -1,0 +1,21 @@
+package com.unimib.worldnews25.service;
+
+import static com.unimib.worldnews25.utils.Constants.*;
+import static com.unimib.worldnews25.utils.Constants.TOP_HEADLINES_COUNTRY_PARAMETER;
+import static com.unimib.worldnews25.utils.Constants.TOP_HEADLINES_ENDPOINT;
+import static com.unimib.worldnews25.utils.Constants.TOP_HEADLINES_PAGE_SIZE_PARAMETER;
+
+import com.unimib.worldnews25.model.ArticleAPIResponse;
+
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.Query;
+
+public interface ArticleAPIService {
+    @GET(TOP_HEADLINES_ENDPOINT)
+    Call<ArticleAPIResponse> getArticles(
+            @Query(TOP_HEADLINES_COUNTRY_PARAMETER) String country,
+            @Query(TOP_HEADLINES_PAGE_SIZE_PARAMETER) int pageSize,
+            @Header("Authorization") String apiKey);
+}
