@@ -9,6 +9,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -49,5 +50,11 @@ public class HomeActivity extends AppCompatActivity {
 
         //getApplicationContext().deleteDatabase(Constants.SAVED_ARTICLES_DATABASE);
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.fragmentContainerView);
+        return navController.navigateUp() || super.onSupportNavigateUp();
     }
 }

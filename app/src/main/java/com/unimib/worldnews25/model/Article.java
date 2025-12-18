@@ -1,5 +1,9 @@
 package com.unimib.worldnews25.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
 import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -7,7 +11,7 @@ import androidx.room.PrimaryKey;
 import java.util.Objects;
 
 @Entity
-public class Article {
+public class Article implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     public long uid;
 
@@ -129,4 +133,61 @@ public class Article {
     public int hashCode() {
         return Objects.hash(source, author, title, description, url, urlToImage, publishedAt, content);
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public void writeToParcel(@NonNull Parcel parcel, int i) {
+        parcel.writeLong(this.uid);
+        parcel.writeString(this.author);
+        parcel.writeString(this.title);
+        parcel.writeParcelable(this.source, i);
+        parcel.writeString(this.description);
+        parcel.writeString(this.url);
+        parcel.writeString(this.urlToImage);
+        parcel.writeString(this.publishedAt);
+        parcel.writeString(this.content);
+        parcel.writeByte(this.like ? (byte) 1 : (byte) 0);
+    }
+
+
+    public void readFromParcel(Parcel source) {
+        this.uid = source.readLong();
+        this.author = source.readString();
+        this.title = source.readString();
+        this.source = source.readParcelable(ArticleSource.class.getClassLoader());
+        this.description = source.readString();
+        this.url = source.readString();
+        this.urlToImage = source.readString();
+        this.publishedAt = source.readString();
+        this.content = source.readString();
+        this.like = source.readByte() != 0;
+    }
+
+    protected Article(Parcel in) {
+        this.uid = in.readLong();
+        this.author = in.readString();
+        this.title = in.readString();
+        this.source = in.readParcelable(ArticleSource.class.getClassLoader());
+        this.description = in.readString();
+        this.url = in.readString();
+        this.urlToImage = in.readString();
+        this.publishedAt = in.readString();
+        this.content = in.readString();
+        this.like = in.readByte() != 0;
+    }
+
+    public static final Parcelable.Creator<Article> CREATOR = new Parcelable.Creator<Article>() {
+        @Override
+        public Article createFromParcel(Parcel source) {
+            return new Article(source);
+        }
+
+        @Override
+        public Article[] newArray(int size) {
+            return new Article[size];
+        }
+    };
 }

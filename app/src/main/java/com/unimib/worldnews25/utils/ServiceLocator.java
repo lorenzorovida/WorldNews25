@@ -1,9 +1,16 @@
-package com.unimib.worldnews25.service;
+package com.unimib.worldnews25.utils;
 
 import android.app.Application;
 
+import com.unimib.worldnews25.R;
 import com.unimib.worldnews25.database.ArticleRoomDatabase;
-import com.unimib.worldnews25.utils.Constants;
+import com.unimib.worldnews25.repository.ArticleRepository;
+import com.unimib.worldnews25.service.ArticleAPIService;
+import com.unimib.worldnews25.source.ArticleLocalDataSource;
+import com.unimib.worldnews25.source.ArticleMockDataSource;
+import com.unimib.worldnews25.source.ArticleNewsAPIDataSource;
+import com.unimib.worldnews25.source.BaseArticleLocalDataSource;
+import com.unimib.worldnews25.source.BaseArticleRemoteDataSource;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -48,5 +55,24 @@ public class ServiceLocator {
 
     public ArticleRoomDatabase getArticlesDB(Application application) {
         return ArticleRoomDatabase.getDatabase(application);
+    }
+
+    public ArticleRepository getArticlesRepository(Application application, boolean debugMode) {
+        BaseArticleRemoteDataSource newsRemoteDataSource;
+        BaseArticleLocalDataSource newsLocalDataSource;
+        SharedPreferencesUtils sharedPreferencesUtil = new SharedPreferencesUtils(application);
+
+        if (debugMode) {
+            JSONParserUtils jsonParserUtil = new JSONParserUtils(application);
+            newsRemoteDataSource =
+                    new ArticleMockDataSource(jsonParserUtil);
+        } else {
+            newsRemoteDataSource =
+                    new ArticleNewsAPIDataSource(application.getString(R.string.news_api_key));
+        }
+
+        newsLocalDataSource = new ArticleLocalDataSource(getArticlesDB(application), sharedPreferencesUtil);
+
+        return new ArticleRepository(newsRemoteDataSource, newsLocalDataSource);
     }
 }

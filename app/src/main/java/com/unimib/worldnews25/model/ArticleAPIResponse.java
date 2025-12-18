@@ -12,6 +12,11 @@ public class ArticleAPIResponse {
         setTotalResults(totalResults);
         setStatus(status);
     }
+
+    public ArticleAPIResponse(List<Article> articles) {
+        setArticles(articles);
+    }
+
     public String getStatus() {
         return status;
     }

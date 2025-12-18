@@ -13,8 +13,14 @@ import java.util.List;
 
 @Dao
 public interface ArticleDAO {
-    @Query("SELECT * FROM Article")
+    @Query("SELECT * FROM Article ORDER BY publishedAt DESC")
     List<Article> getAll();
+
+    @Query("SELECT * FROM article WHERE uid = :id")
+    Article getArticle(long id);
+
+    @Query("SELECT * FROM Article WHERE `like` = 1")
+    List<Article> getLiked();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Article... articles);
@@ -32,5 +38,8 @@ public interface ArticleDAO {
     void deleteAll();
 
     @Update
-    void updateArticle(Article article);
+    int updateArticle(Article article);
+
+    @Update
+    int updateListFavoriteArticles(List<Article> articles);
 }

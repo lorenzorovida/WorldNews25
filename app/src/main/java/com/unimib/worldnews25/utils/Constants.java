@@ -87,6 +87,7 @@ public class Constants {
     public static final String SHARED_PREFERENCES_FILENAME = "com.unimib.worldnews.preferences";
     public static final String SHARED_PREFERENCES_COUNTRY_OF_INTEREST = "country_of_interest";
     public static final String SHARED_PREFERENCES_CATEGORIES_OF_INTEREST = "categories_of_interest";
+    public static final String SHARED_PREFERNECES_LAST_UPDATE = "last_update";
 
     public static final String SAMPLE_JSON_API_RESPONSE = "sample_api_response.json";
     public static final String SAVED_ARTICLES_DATABASE = "db-articles";
@@ -100,6 +101,13 @@ public class Constants {
     public static final String REMOVED_ARTICLE_TITLE = "[Removed]";
 
     public static final int FRESH_TIMEOUT = 1000 * 60; // 1 minute in milliseconds
+
+    public static final String RETROFIT_ERROR = "retrofit_error";
+    public static final String API_KEY_ERROR = "api_key_error";
+    public static final String UNEXPECTED_ERROR = "unexpected_error";
+
+    public static final String BUNDLE_KEY_CURRENT_ARTICLE = "current_article";
+
 
 
 }
